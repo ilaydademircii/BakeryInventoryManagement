@@ -1,13 +1,12 @@
-package view.payments;
+package view.customers;
 
 import javax.swing.JInternalFrame;
 
-public class PaymentFrame extends JInternalFrame {
+public class ListingCustomersFrame extends JInternalFrame {
 
 //	private static final long serialVersionUID = 1L;
 
-
-	public PaymentFrame() {
+	public ListingCustomersFrame() {
 		setMaximizable(true);
 		setIconifiable(true);
 		setClosable(true);

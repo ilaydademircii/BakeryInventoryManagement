@@ -1,18 +1,17 @@
-package controllers.payments;
+package controllers.customers;
 
 import view.MainFrame;
-import view.payments.ReceivingPaymentFrame;
+import view.customers.ListingCustomersFrame;
 
-public class ReceivingPaymentController {
-
+public class ListingCustomersController {
 
 	private MainFrame mainFrame;
-	ReceivingPaymentFrame frame;
+	ListingCustomersFrame frame;
 	
-	public ReceivingPaymentController(MainFrame mainFrame) {
+	public ListingCustomersController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
-		this.frame=new ReceivingPaymentFrame();
+		this.frame=new ListingCustomersFrame();
 		
 	}
 	
@@ -28,6 +27,4 @@ public class ReceivingPaymentController {
 		mainFrame.desktopPane.add(frame);
 		frame.toFront();
 	}
-	
-	
 }

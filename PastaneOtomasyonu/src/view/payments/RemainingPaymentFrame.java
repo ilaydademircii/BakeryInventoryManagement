@@ -8,6 +8,9 @@ public class RemainingPaymentFrame extends JInternalFrame {
 
 
 	public RemainingPaymentFrame() {
+		setMaximizable(true);
+		setIconifiable(true);
+		setClosable(true);
 		setBounds(100, 100, 450, 300);
 
 	}
