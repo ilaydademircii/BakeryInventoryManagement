@@ -7,11 +7,13 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
 	private static DatabaseConnection instance;
-	private String username = "leventbicakci";
-	private String password = "leventbicakci";
+	
+	private String username = "root";
+	private String password = "zidily";
 	private String dbName = "bakerymanagementsystem";
-	private String host = "10.102.16.18";
+	private String host = "localhost";
 	private int port = 3306;
+
 	private Connection conn = null;
 
 	// veritabanı bağlantısını tek defa yapıp tüm projede onu paylaşarak kullanmak

@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class AddCustomerFrame extends JInternalFrame {
-	private JTextField cafeName;
+	public JTextField cafeName;
 	public JTextField taxNumber;
 	public JTextField phoneNumber;
 	public JTextField taxAdministration;
@@ -22,10 +22,11 @@ public class AddCustomerFrame extends JInternalFrame {
 	public JTextArea address;
 
 	public AddCustomerFrame() {
+		setTitle("Müşteri Ekleme");
 		setClosable(true);
 		setMaximizable(true);
 		setIconifiable(true);
-		setBounds(100, 100, 714, 665);
+		setBounds(100, 100, 543, 666);
 		getContentPane().setLayout(null);
 
 		cafeName = new JTextField();
