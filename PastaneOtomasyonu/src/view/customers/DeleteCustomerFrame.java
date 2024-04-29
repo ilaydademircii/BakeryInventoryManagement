@@ -8,9 +8,6 @@ public class DeleteCustomerFrame extends JInternalFrame {
 
 
 	public DeleteCustomerFrame() {
-		setClosable(true);
-		setMaximizable(true);
-		setIconifiable(true);
 		setBounds(100, 100, 450, 300);
 
 	}
