@@ -1,20 +1,25 @@
 package view.customers;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
-import javax.swing.JFormattedTextField;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class DeleteCustomerFrame extends JInternalFrame {
-	private JTextField taxNo;
-	private JTextField phoneNumber;
-	private JTextField taxAdministration;
-
+	public JTextField taxNo;
+	public JTextField phoneNumber;
+	public JTextField taxAdministration;
+	public JComboBox cafeName;
+	public JFormattedTextField dateArea;
+	public JTextArea address;
+	public JTextArea explanation;
+	public JButton deletingButton;	
 //	private static final long serialVersionUID = 1L;
 
 
@@ -65,11 +70,11 @@ public class DeleteCustomerFrame extends JInternalFrame {
 		phoneNumber.setBounds(201, 180, 240, 30);
 		getContentPane().add(phoneNumber);
 		
-		JTextArea explanation = new JTextArea();
+		 explanation = new JTextArea();
 		explanation.setBounds(201, 380, 240, 120);
 		getContentPane().add(explanation);
 		
-		JFormattedTextField dateArea = new JFormattedTextField();
+		 dateArea = new JFormattedTextField();
 		dateArea.setEditable(false);
 		dateArea.setEnabled(false);
 		dateArea.setBounds(201, 522, 240, 30);
@@ -91,17 +96,17 @@ public class DeleteCustomerFrame extends JInternalFrame {
 		lblAddress.setBounds(47, 230, 112, 30);
 		getContentPane().add(lblAddress);
 		
-		JButton deletingButton = new JButton("Sil");
+		 deletingButton = new JButton("Sil");
 		deletingButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		deletingButton.setBounds(341, 571, 100, 30);
 		getContentPane().add(deletingButton);
 		
-		JTextArea address = new JTextArea();
+		 address = new JTextArea();
 		address.setEditable(false);
 		address.setBounds(201, 230, 240, 120);
 		getContentPane().add(address);
 		
-		JComboBox cafeName = new JComboBox();
+		 cafeName = new JComboBox();
 		cafeName.setFont(new Font("Tahoma", Font.BOLD, 11));
 		cafeName.setBounds(201, 29, 240, 30);
 		getContentPane().add(cafeName);

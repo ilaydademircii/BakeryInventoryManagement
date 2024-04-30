@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -15,7 +17,7 @@ public class Customer {
 	private Statement stat = null;
 
 	private static Customer instance;
-	
+
 	String cafeName;
 	String taxNo;
 	String taxAdministration;
@@ -40,9 +42,9 @@ public class Customer {
 		try {
 			if (!Customer.getInstance().getTaxNo().isEmpty()) {
 				if (!isExists(Customer.getInstance().getTaxNo())) {
-					String query = "insert into customers(CafeName,TaxNo,TaxAdministration,PhoneNumber,Address,Explanation)values(?,?,?,?,?,?)";		
+					String query = "insert into customers(CafeName,TaxNo,TaxAdministration,PhoneNumber,Address,Explanation)values(?,?,?,?,?,?)";
 					setCustomerWithPrepaeredStatement(query);
-					
+
 					JOptionPane.showMessageDialog(null, "Müşteri başarıyla eklendi.", "  ",
 							JOptionPane.INFORMATION_MESSAGE);
 
@@ -57,6 +59,44 @@ public class Customer {
 		}
 	}
 	
+	public void deleteCustomer() {
+		try {
+				String query = "Delete from customers where CafeName =?";
+
+				pstat = conn.prepareStatement(query);
+				pstat.setString(1, getCafeName());
+
+				pstat.executeUpdate();
+				pstat.close();
+
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	public List<String> getAllCafeNames() {
+		List<String> list = new ArrayList<>();
+		try {
+			String query = "SELECT CafeName FROM customers";
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(query);
+
+			while (rs.next()) {
+				list.add(rs.getString("CafeNAme"));
+			}
+			
+			rs.close();
+			stat.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return list;
+	}
+
 	public boolean isExists(String taxNo) {
 		try {
 			String query = "SELECT EXISTS (SELECT 1 FROM customers WHERE TaxNo=?) AS var_mi";
@@ -75,7 +115,7 @@ public class Customer {
 
 		}
 	}
-	
+
 	public void setCustomerWithPrepaeredStatement(String query) {
 		try {
 			Customer customer = Customer.getInstance();
@@ -87,7 +127,6 @@ public class Customer {
 			pstat.setString(5, customer.getAddress());
 			pstat.setString(6, customer.getExplanation());
 
-
 			pstat.executeUpdate();
 			pstat.close();
 		} catch (Exception e) {
@@ -95,7 +134,6 @@ public class Customer {
 		}
 	}
 
-	
 	public void getCustomerWithStatement(String query) {
 		Customer customer = Customer.getInstance();
 		try {
@@ -116,20 +154,7 @@ public class Customer {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public String getCafeName() {
 		return cafeName;
 	}
@@ -177,6 +202,5 @@ public class Customer {
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
-	
-	
+
 }
