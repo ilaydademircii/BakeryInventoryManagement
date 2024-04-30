@@ -17,7 +17,7 @@ public class Customer {
 	private Statement stat = null;
 
 	private static Customer instance;
-
+//Aa
 	String cafeName;
 	String taxNo;
 	String taxAdministration;
