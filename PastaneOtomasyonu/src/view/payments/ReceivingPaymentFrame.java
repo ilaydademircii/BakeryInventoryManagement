@@ -4,12 +4,12 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
 
 public class ReceivingPaymentFrame extends JInternalFrame {
 	public JTextField remainingPaymentAmount;
@@ -67,13 +67,17 @@ public class ReceivingPaymentFrame extends JInternalFrame {
 		getContentPane().add(lblAlnandeme);
 
 		getPaymentsButton = new JButton("Ödeme al");
+
 		getPaymentsButton.setBounds(362, 326, 89, 23);
 		getContentPane().add(getPaymentsButton);
 
 		searchButton = new JButton("");
+
 		searchButton.setIcon(new ImageIcon("C:\\Users\\zehra\\OneDrive\\Masaüstü\\icons\\icons8-search-20.png"));
 		searchButton.setBounds(399, 147, 58, 26);
 		getContentPane().add(searchButton);
+		
+		
 		
 		cafeName = new JComboBox();
 		cafeName.setFont(new Font("Tahoma", Font.BOLD, 11));

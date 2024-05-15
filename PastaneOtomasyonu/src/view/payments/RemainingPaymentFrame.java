@@ -5,6 +5,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RemainingPaymentFrame extends JInternalFrame {
 
@@ -12,7 +14,7 @@ public class RemainingPaymentFrame extends JInternalFrame {
 
 	public JTable table;
 	public DefaultTableModel modelim;
-	public JButton searchButton;
+	public JButton listingButton;
 	Object[] colums = { "Kafe Adı", "Vergi Numarası", "Vergi Dairesi", "Telefon Numarası", "Adresi", "Kalan Ödeme" };
 
 	public RemainingPaymentFrame() {
@@ -34,9 +36,10 @@ public class RemainingPaymentFrame extends JInternalFrame {
 		modelim.setColumnIdentifiers(colums);
 
 		table.setDefaultEditor(Object.class, null);
-		searchButton = new JButton("Kalan Ödemeler");
-		searchButton.setBounds(299, 428, 147, 23);
-		getContentPane().add(searchButton);
+		listingButton = new JButton("Kalan Ödemeler");
+
+		listingButton.setBounds(299, 428, 147, 23);
+		getContentPane().add(listingButton);
 
 	}
 

@@ -1,5 +1,11 @@
 package controllers.payments;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import command.paymentCommands.SetCafeNamesForReceivingPaymentComboBoxCommand;
+import model.Customer;
+import model.payments.ReceivingPayment;
 import view.MainFrame;
 import view.payments.ReceivingPaymentFrame;
 
@@ -9,17 +15,24 @@ public class ReceivingPaymentController {
 	private MainFrame mainFrame;
 	ReceivingPaymentFrame frame;
 	
+	ReceivingPayment receivingPayment;
+	
+	SetCafeNamesForReceivingPaymentComboBoxCommand cafeNamesForReceivingPaymentComboBoxCommand;
+	
 	public ReceivingPaymentController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
 		this.frame=new ReceivingPaymentFrame();
-		
+		this.cafeNamesForReceivingPaymentComboBoxCommand=new SetCafeNamesForReceivingPaymentComboBoxCommand(frame);
+		this.cafeNamesForReceivingPaymentComboBoxCommand.execute();
+		this.receivingPayment= ReceivingPayment.getInstance();
 	}
 	
 	
 	public void execute() {
 		fillFrameInstance();
-		
+		search();
+		getPayment();
 
 	}
 
@@ -29,5 +42,24 @@ public class ReceivingPaymentController {
 		frame.toFront();
 	}
 	
+	private void search() {
+		frame.searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Customer.getInstance().setCafeName(frame.cafeName.getSelectedItem().toString());
+				frame.remainingPaymentAmount.setText(receivingPayment.getRemainingAmount(frame.cafeName.getSelectedItem().toString()));
+				
+			}
+		});
+	}
+	
+	private void getPayment() {
+		frame.getPaymentsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Customer.getInstance().setCafeName(frame.cafeName.getSelectedItem().toString());
+				receivingPayment.savePayment();
+				frame.remainingPaymentAmount.setText(receivingPayment.getRemainingAmount(frame.cafeName.getSelectedItem().toString()));
+			}
+		});
+	}
 	
 }

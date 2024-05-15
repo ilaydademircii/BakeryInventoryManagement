@@ -1,20 +1,17 @@
-package command.comboBoxCommand;
+package command.paymentCommands;
 
 import java.util.List;
 
 import model.Customer;
-import view.customers.DeleteCustomerFrame;
+import view.payments.PaymentFrame;
 
 
-public class SetCafeNamesComboBoxCommand {
-	DeleteCustomerFrame frame;
+public class SetCafeNamesForPaymentComboBoxCommand {
+	PaymentFrame frame;
 	List<String> list;
 
-	public SetCafeNamesComboBoxCommand(DeleteCustomerFrame frame) {
+	public SetCafeNamesForPaymentComboBoxCommand(PaymentFrame frame) {
 		super();
-		this.frame = frame;
-		this.frame = frame;
-
 		this.frame = frame;
 
 	}

@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PaymentFrame extends JInternalFrame {
 	public JTable table;
@@ -18,6 +20,7 @@ public class PaymentFrame extends JInternalFrame {
 	Object[] colums = {"Ödenen Tutar","Ödeme Tarihi"};
 	public JButton searchButton;
 	public JComboBox cafeName;
+	
 	
 	public PaymentFrame() {
 		setTitle("Geçmiş Ödemeler");
@@ -33,9 +36,14 @@ public class PaymentFrame extends JInternalFrame {
 		getContentPane().add(lblNewLabel_1_1);
 		
 		 searchButton = new JButton("");
-		 searchButton.setBounds(581, 79, 65, 26);
+
+
+		searchButton.setBounds(581, 79, 65, 26);
 		searchButton.setIcon(new ImageIcon("C:\\Users\\zehra\\OneDrive\\Masaüstü\\icons\\icons8-search-20.png"));
 		getContentPane().add(searchButton);
+		
+		modelim = new DefaultTableModel();
+		modelim.setColumnIdentifiers(colums);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(48, 149, 607, 312);
