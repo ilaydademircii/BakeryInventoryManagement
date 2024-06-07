@@ -25,6 +25,8 @@ public class MainFrame extends JFrame {
 	public JMenuItem addCustomerMenuItem;
 	public JMenuItem deleteCustomerMenuItem;
 	public JMenuItem listCustomersMenuItem;
+	public JMenuItem materialMenuItem;
+	public JMenuItem materialTypeMenuItem;
 	
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,6 +58,15 @@ public class MainFrame extends JFrame {
 		
 		listCustomersMenuItem = new JMenuItem("Listeleme");
 		customersMenu.add(listCustomersMenuItem);
+		
+		JMenu mnNewMenu = new JMenu("Malzemeler");
+		menuBar.add(mnNewMenu);
+		
+		 materialTypeMenuItem = new JMenuItem("Malzeme Türü Ekleme");
+		mnNewMenu.add(materialTypeMenuItem);
+		
+		 materialMenuItem = new JMenuItem("Malzeme Ekleme");
+		mnNewMenu.add(materialMenuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

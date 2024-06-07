@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import controllers.customers.AddCustomerController;
 import controllers.customers.DeleteCustomerController;
 import controllers.customers.ListingCustomersController;
+import controllers.materials.AddMaterialTypeController;
+import controllers.materials.AddMaterialsController;
 import controllers.payments.PaymentController;
 import controllers.payments.ReceivingPaymentController;
 import controllers.payments.RemainingPaymentsController;
@@ -55,6 +57,19 @@ public class MainFrameController {
 		mainFrame.remainingPaymentsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RemainingPaymentsController controller=new RemainingPaymentsController(mainFrame);
+				controller.execute();
+			}
+		});
+		
+		mainFrame.materialTypeMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddMaterialTypeController controller=new AddMaterialTypeController(mainFrame);
+				controller.execute();
+			}
+		});
+		mainFrame.materialMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddMaterialsController controller=new AddMaterialsController(mainFrame);
 				controller.execute();
 			}
 		});
