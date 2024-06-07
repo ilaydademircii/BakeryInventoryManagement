@@ -11,6 +11,8 @@ import controllers.materials.AddMaterialsController;
 import controllers.payments.PaymentController;
 import controllers.payments.ReceivingPaymentController;
 import controllers.payments.RemainingPaymentsController;
+import controllers.recipecards.ProducingRecipeCardController;
+import controllers.recipecards.SetRecipeCardController;
 import view.MainFrame;
 
 public class MainFrameController {
@@ -70,6 +72,18 @@ public class MainFrameController {
 		mainFrame.materialMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddMaterialsController controller=new AddMaterialsController(mainFrame);
+				controller.execute();
+			}
+		});
+		mainFrame.recipeCardMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SetRecipeCardController controller=new SetRecipeCardController(mainFrame);
+				controller.execute();
+			}
+		});
+		mainFrame.productMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProducingRecipeCardController controller=new ProducingRecipeCardController(mainFrame);
 				controller.execute();
 			}
 		});
