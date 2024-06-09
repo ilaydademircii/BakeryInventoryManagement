@@ -15,42 +15,37 @@ import view.materials.AddMaterialsFrame;
 public class AddMaterialsController {
 	private MainFrame mainFrame;
 	AddMaterialsFrame frame;
-	
+
 	Materials materials;
-	AddMaterialCommand addMaterialCommand ;
+	AddMaterialCommand addMaterialCommand;
 	SetAllMaterialNamesForMaterialsComboBoxCommand allMaterialNamesForMaterialsComboBoxCommand;
 	GetMaterialCommand getMaterialCommand;
-	
 
 	public AddMaterialsController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
-		this.frame=new AddMaterialsFrame();
-		this.addMaterialCommand= new AddMaterialCommand(frame);
-		this.allMaterialNamesForMaterialsComboBoxCommand=new SetAllMaterialNamesForMaterialsComboBoxCommand(frame);
+		this.frame = new AddMaterialsFrame();
+		this.addMaterialCommand = new AddMaterialCommand(frame);
+		this.allMaterialNamesForMaterialsComboBoxCommand = new SetAllMaterialNamesForMaterialsComboBoxCommand(frame);
 
-		this.getMaterialCommand=new GetMaterialCommand(frame);
-		this.materials=Materials.getInstance();
+		this.getMaterialCommand = new GetMaterialCommand(frame);
+		this.materials = Materials.getInstance();
 	}
-	
-	
+
 	public void execute() {
 		fillFrameInstance();
 		save();
 		setMaterials();
 		setMaterialInfo();
 
-
 	}
-	
-	
+
 	private void fillFrameInstance() {
 		frame.setVisible(true);
 		mainFrame.desktopPane.add(frame);
 		frame.toFront();
 	}
-	
-	
+
 	public void save() {
 		frame.addingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -59,13 +54,9 @@ public class AddMaterialsController {
 			}
 		});
 	}
-	
-	
-	
 
 	private void setMaterials() {
 		frame.category.addItemListener(new ItemListener() {
-			
 
 			public void itemStateChanged(ItemEvent e) {
 				try {
@@ -77,10 +68,12 @@ public class AddMaterialsController {
 
 						Materials.getInstance().setCategory(frame.category.getSelectedItem().toString().trim());
 						allMaterialNamesForMaterialsComboBoxCommand.execute();
-						}
-					} catch (Exception ex) {
-						ex.printStackTrace();
-				}	
+
+						frame.category.addItemListener(this);
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 		});
 	}
@@ -95,32 +88,21 @@ public class AddMaterialsController {
 						clearMaterialInfo();
 						Materials.getInstance().setName(frame.name.getSelectedItem().toString().trim());
 						getMaterialCommand.execute();
-						} 
-					}catch (Exception ex) {
+
+						frame.name.addItemListener(this);
+					}
+				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
-				}
-			
+			}
+
 		});
 	}
-	
-	
-	
+
 	private void clearMaterialInfo() {
 		frame.barcode.setText("");
 		frame.unit.setText("");
 
-
 	}
 
-
-
-	
-	
-	
-	
-	
-	
-	
-	
 }

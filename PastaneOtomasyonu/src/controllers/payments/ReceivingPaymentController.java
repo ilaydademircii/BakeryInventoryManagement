@@ -3,6 +3,7 @@ package controllers.payments;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import command.paymentCommands.GetReceivedPaymentCommand;
 import command.paymentCommands.SetCafeNamesForReceivingPaymentComboBoxCommand;
 import model.Customer;
 import model.payments.ReceivingPayment;
@@ -18,6 +19,7 @@ public class ReceivingPaymentController {
 	ReceivingPayment receivingPayment;
 	
 	SetCafeNamesForReceivingPaymentComboBoxCommand cafeNamesForReceivingPaymentComboBoxCommand;
+	GetReceivedPaymentCommand getReceivedPaymentCommand;
 	
 	public ReceivingPaymentController(MainFrame mainFrame) {
 		super();
@@ -26,6 +28,7 @@ public class ReceivingPaymentController {
 		this.cafeNamesForReceivingPaymentComboBoxCommand=new SetCafeNamesForReceivingPaymentComboBoxCommand(frame);
 		this.cafeNamesForReceivingPaymentComboBoxCommand.execute();
 		this.receivingPayment= ReceivingPayment.getInstance();
+		this.getReceivedPaymentCommand=new GetReceivedPaymentCommand(frame);
 	}
 	
 	
@@ -45,8 +48,8 @@ public class ReceivingPaymentController {
 	private void search() {
 		frame.searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Customer.getInstance().setCafeName(frame.cafeName.getSelectedItem().toString());
-				frame.remainingPaymentAmount.setText(receivingPayment.getRemainingAmount(frame.cafeName.getSelectedItem().toString()));
+				receivingPayment.setCustomerName(frame.cafeName.getSelectedItem().toString());
+				frame.remainingPaymentAmount.setText(receivingPayment.getRemainingAmount());
 				
 			}
 		});
@@ -55,9 +58,9 @@ public class ReceivingPaymentController {
 	private void getPayment() {
 		frame.getPaymentsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Customer.getInstance().setCafeName(frame.cafeName.getSelectedItem().toString());
+				getReceivedPaymentCommand.execute();
 				receivingPayment.savePayment();
-				frame.remainingPaymentAmount.setText(receivingPayment.getRemainingAmount(frame.cafeName.getSelectedItem().toString()));
+				frame.remainingPaymentAmount.setText(receivingPayment.getRemainingAmount());
 			}
 		});
 	}

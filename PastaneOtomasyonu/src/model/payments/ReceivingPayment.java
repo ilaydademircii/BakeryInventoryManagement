@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-import model.Customer;
 import model.DatabaseConnection;
 
 public class ReceivingPayment {
@@ -19,8 +18,9 @@ public class ReceivingPayment {
 
 	private static ReceivingPayment instance;
 
-	int customerId;
-	String amount;
+	String customerName;
+	String receievedAmount;
+	String remainingAmount;
 	String date;
 
 	public ReceivingPayment() {
@@ -36,104 +36,83 @@ public class ReceivingPayment {
 		return instance;
 	}
 
-	public String getRemainingAmount(String CafeName) {
-		String query = "Select Amount from remainingcustomerpayments where CustomerId=((Select id from customers where CafeName=?))";
-		this.amount="";
-		
-		try {
-			pstat= conn.prepareStatement(query);
-			pstat.setString(1,CafeName);
-			ResultSet rs=pstat.executeQuery();
-		
-			if (rs.next()) {
-				 this.amount = rs.getString("Amount");
-				}
-			
-			pstat.close();
-			rs.close();			
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-
-		return this.amount;
-
-	}
-	
-	
 	public void savePayment() {
 		try {
+			String remainingAmountStr = getRemainingAmount();
+			int remainingAmount = Integer.parseInt(remainingAmountStr);
 
-			String query = "insert into receivedcustomerpayments(CustomerId,Amount) values ((Select id from  customers where CafeName=?) ,?)";
-			setReceievedPaymentsWithPrepaeredStatement(query);
+			// Kalan miktar 0'dan büyükse, ödeme işlemini gerçekleştiriyoruz
+			if (remainingAmount > 0) {
+				// Kalan miktar 0'dan büyükse, ödeme işlemini gerçekleştiriyoruz
 
-			String query2="UPDATE remainingcustomerpayments SET Amount = Amount - ? WHERE CustomerId = (SELECT id FROM customers WHERE CafeName = ?);";
-			setRemainingPaymentAmount(query2);
-			
-			JOptionPane.showMessageDialog(null, "Ödeme başarıyla alındı.", "  ", JOptionPane.INFORMATION_MESSAGE);
+				String query = "insert into receivedcustomerpayments(CustomerId,Amount) values ((Select id from  customers where CafeName=?) ,?)";
+				setReceievedPaymentsWithPrepaeredStatement(query);
 
+				String query2 = "UPDATE remainingcustomerpayments SET Amount = Amount - ? WHERE CustomerId = (SELECT id FROM customers WHERE CafeName = ?);";
+				setRemainingPaymentAmount(query2);
+
+				JOptionPane.showMessageDialog(null, "Ödeme başarıyla alındı.", "  ", JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Borç yok, ödeme alınmadı.", "  ", JOptionPane.INFORMATION_MESSAGE);
+
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Müşteri bulunamadı.", "  ", JOptionPane.INFORMATION_MESSAGE);
 
-
 		}
 	}
-	
-	
+
 	public void setRemainingPaymentAmount(String query) {
 		try {
-			pstat=conn.prepareStatement(query);
-			pstat.setString(1, getAmount());
-			pstat.setString(2, Customer.getInstance().getCafeName());
-			
+			pstat = conn.prepareStatement(query);
+			pstat.setString(1, getReceievedAmount());
+
+			pstat.setString(2, getCustomerName());
+
 			pstat.executeUpdate();
 			pstat.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
+
 	public void setReceievedPaymentsWithPrepaeredStatement(String query) {
 		try {
-			pstat =conn.prepareStatement(query);
-			pstat.setString(1, Customer.getInstance().getCafeName());
-			pstat.setString(2, getAmount());
+
+			pstat = conn.prepareStatement(query);
+			pstat.setString(1, getCustomerName());
+			pstat.setString(2, getReceievedAmount());
 
 			pstat.executeUpdate();
 			pstat.close();
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 
-	public int getCustomerId() {
-		return customerId;
-	}
+	public String getRemainingAmount() {
+		String query = "Select Amount from remainingcustomerpayments where CustomerId=(Select id from customers where CafeName=?)";
+		String remainingAmount = "";
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
+		try {
+			pstat = conn.prepareStatement(query);
+			pstat.setString(1, instance.getCustomerName());
+			ResultSet rs = pstat.executeQuery();
 
-	public String getAmount() {
-		return amount;
-	}
+			if (rs.next()) {
+				remainingAmount = (rs.getString("Amount"));
+			}
+			rs.close();
+			pstat.close();
 
-	public void setAmount(String amount) {
-		this.amount = amount;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return remainingAmount;
 	}
 
 	public String getDate() {
@@ -142,6 +121,30 @@ public class ReceivingPayment {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getReceievedAmount() {
+		return receievedAmount;
+	}
+
+	public void setReceivedAmount(String receievedamount) {
+		this.receievedAmount = receievedamount;
+	}
+
+	public String getRemainingPrice() {
+		return remainingAmount;
+	}
+
+	public void setRemainingPrice(String remainingamount) {
+		this.remainingAmount = remainingamount;
 	}
 
 }

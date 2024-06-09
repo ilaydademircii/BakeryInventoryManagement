@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 	public JMenu mnNewMenu_1;
 	public JMenuItem recipeCardMenuItem;
 	public JMenuItem productMenuItem;
-	
+	public JMenuItem saleMenuItem;
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -79,6 +79,12 @@ public class MainFrame extends JFrame {
 		
 		productMenuItem = new JMenuItem("Ürün Ekle");
 		mnNewMenu_1.add(productMenuItem);
+		
+		JMenu mnNewMenu_2 = new JMenu("Satış");
+		menuBar.add(mnNewMenu_2);
+		
+		 saleMenuItem = new JMenuItem("Satış");
+		mnNewMenu_2.add(saleMenuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

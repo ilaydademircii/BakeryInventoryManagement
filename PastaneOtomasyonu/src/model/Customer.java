@@ -24,11 +24,12 @@ public class Customer {
 	String phoneNumber;
 	String address;
 	String explanation;
-
+	List<Customer> list;
 	public Customer() {
 		super();
 		this.db = DatabaseConnection.getInstance();
 		this.conn = db.getConnection();
+		this.list=new  ArrayList<Customer>();
 	}
 
 	public static Customer getInstance() {
@@ -76,6 +77,33 @@ public class Customer {
 		}
 	}
 	
+	public void getCustomer() {
+		Customer customer=Customer.getInstance();
+		try {
+				String query = "Select TaxNo,TaxAdministration,PhoneNumber,Address from customers where CafeName =?";
+
+				pstat = conn.prepareStatement(query);
+				pstat.setString(1, getCafeName());
+				
+				ResultSet rs = pstat.executeQuery();
+				while (rs.next()) {
+					customer.setTaxNo(rs.getString("TaxNo"));
+					customer.setTaxAdministration(rs.getString("TaxAdministration"));
+					customer.setPhoneNumber(rs.getString("PhoneNumber"));
+					customer.setAddress(rs.getString("Address"));
+				}
+				
+			
+				pstat.close();
+
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	
 	public List<String> getAllCafeNames() {
 		List<String> list = new ArrayList<>();
 		try {
@@ -84,7 +112,7 @@ public class Customer {
 			ResultSet rs = stat.executeQuery(query);
 
 			while (rs.next()) {
-				list.add(rs.getString("CafeNAme"));
+				list.add(rs.getString("CafeName"));
 			}
 			
 			rs.close();
@@ -96,7 +124,34 @@ public class Customer {
 		}
 		return list;
 	}
+	
+	public List<Customer> getAllCustomers() {
+		
+		String query = "SELECT CafeName,TaxNo,TaxAdministration,PhoneNumber,Address FROM customers";
+		try {
+			
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(query);
 
+			while (rs.next()) {
+				Customer customer=new Customer();
+				customer.setCafeName(rs.getString("CafeName"));
+				customer.setTaxNo(rs.getString("TaxNo"));
+				customer.setTaxAdministration(rs.getString("TaxAdministration"));
+				customer.setPhoneNumber(rs.getString("PhoneNumber"));
+				customer.setAddress(rs.getString("Address"));
+				this.list.add(customer);
+			}
+			
+			rs.close();
+			stat.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return this.list;
+	}
 	public boolean isExists(String taxNo) {
 		try {
 			String query = "SELECT EXISTS (SELECT 1 FROM customers WHERE TaxNo=?) AS var_mi";

@@ -17,9 +17,9 @@ public class GetMaterialCommand {
 
 	public void execute() {
 		
-		Materials.getInstance().getMaterial();
-		frame.barcode.setText(Materials.getInstance().getBarcode());		
-		frame.unit.setText(Materials.getInstance().getUnit());		
+		materials.getMaterial();
+		frame.barcode.setText(materials.getBarcode());		
+		frame.unit.setText(materials.getUnit());		
 
 	}
 

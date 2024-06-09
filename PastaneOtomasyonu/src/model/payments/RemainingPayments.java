@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.DatabaseConnection;
 
 public class RemainingPayments {
 
-	
 	DatabaseConnection db;
 	private PreparedStatement pstat = null;
 	private Connection conn = null;
@@ -28,11 +28,11 @@ public class RemainingPayments {
 	String date;
 	List<RemainingPayments> list;
 
-	
 	public RemainingPayments() {
 		super();
 		this.db = DatabaseConnection.getInstance();
 		this.conn = db.getConnection();
+		this.list = new ArrayList<RemainingPayments>();
 	}
 
 	public static RemainingPayments getInstance() {
@@ -42,38 +42,34 @@ public class RemainingPayments {
 		return instance;
 	}
 
-	public List<RemainingPayments> getAllRemainingPayments(){
-		String query = "SELECT customers.CafeName, customers.TaxNumber, customers.TaxAdministration, customers.PhoneNumber, customers.Address, remainingcustomerpayments.Amount\r\n"
-				+ "FROM remainingcustomerpayments\r\n"
-				+ "INNER JOIN customers ON remainingcustomerpayments.CustomerId = customers.Id\r\n"    ///ID ?? id????
-				+ "WHERE remainingcustomerpayments.Amount REGEXP '^[0-9]+$' \r\n"
-				+ "AND CAST(remainingcustomerpayments.Amount AS DECIMAL) > 0; ";
-		
+	public List<RemainingPayments> getAllRemainingPayments() {
+		String query = "SELECT customers.CafeName, customers.TaxNo, customers.TaxAdministration, customers.PhoneNumber, customers.Address, remainingcustomerpayments.Amount FROM remainingcustomerpayments"
+				+ " INNER JOIN customers ON remainingcustomerpayments.CustomerId = customers.id"
+				+ " WHERE remainingcustomerpayments.Amount REGEXP '^[0-9]+$' "
+				+ "  AND CAST(remainingcustomerpayments.Amount AS DECIMAL) > 0;";
+
 		try {
-			
-			stat=conn.createStatement();
-			ResultSet rs=stat.executeQuery(query);
-			
-			while(rs.next()) {
-				RemainingPayments rp=new RemainingPayments();
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(query);
+
+			while (rs.next()) {
+				RemainingPayments rp =new RemainingPayments();
 				rp.setCustomerCafeName(rs.getString("CafeName"));
-				rp.setCustomerTaxNumber(rs.getString("TaxNumber"));
+				rp.setCustomerTaxNumber(rs.getString("TaxNo"));
 				rp.setCustomerTaxAdministration(rs.getString("TaxAdministration"));
 				rp.setCustomerPhoneNumber(rs.getString("PhoneNumber"));
 				rp.setCustomerAddress(rs.getString("Address"));
 				rp.setAmount(rs.getString("Amount"));
 				list.add(rp);
 			}
-			
 
-			stat.close();
 			rs.close();
-			
+			stat.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return this.list;
 	}
 
@@ -140,7 +136,5 @@ public class RemainingPayments {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
-	
-	
+
 }

@@ -63,21 +63,13 @@ public class Materials {
 		}
 		return list;
 	}
-	public void getMaterial() {
+/*	public void getMaterial() {
 	    String query = "SELECT Barcode, Unit FROM materials WHERE Category = ? AND Name = ?";
 
-	    // Print the query to debug
-	    System.out.println("SQL Query: " + query);
+	   
 	    
 	    try {
 	        PreparedStatement stat = conn.prepareStatement(query);
-
-	        // Print values being set to ensure they are not null
-	        String category = Materials.getInstance().getCategory();
-	        String name = Materials.getInstance().getName();
-	        System.out.println("Category: " + category);
-	        System.out.println("Name: " + name);
-
 	        stat.setString(1, category);
 	        stat.setString(2, name);
 
@@ -94,20 +86,20 @@ public class Materials {
 	        e.printStackTrace();
 	    }
 	}
-/*
+*/
 	public void getMaterial() {
 		String query = "Select Barcode,Unit from materials where Category=? AND Name=? ";
 
 		try {
 
 			pstat = conn.prepareStatement(query);
-			pstat.setString(1, Materials.getInstance().getCategory());
-			pstat.setString(2, Materials.getInstance().getName());
+			pstat.setString(1, instance.getCategory());
+			pstat.setString(2, instance.getName());
 			ResultSet rs = pstat.executeQuery();
 
 			while (rs.next()) {
-				Materials.getInstance().setBarcode(rs.getString("Barcode"));
-				Materials.getInstance().setUnit(rs.getString("Unit"));
+				instance.setBarcode(rs.getString("Barcode"));
+				instance.setUnit(rs.getString("Unit"));
 			}
 
 			pstat.close();
@@ -117,7 +109,7 @@ public class Materials {
 		}
 
 	}
-*/
+
 	public void saveMaterialType() {
 		try {
 
@@ -155,11 +147,11 @@ public class Materials {
 	public void setMaterialTypeWithPrepaeredStatement(String query) {
 		try {
 			pstat = conn.prepareStatement(query);
-			pstat.setString(1, Materials.getInstance().getCategory());
-			pstat.setString(2, Materials.getInstance().getName());
-			pstat.setString(3, Materials.getInstance().getBarcode());
-			pstat.setString(4, Materials.getInstance().getUnit());
-			pstat.setString(5, Materials.getInstance().getFirstAmount());
+			pstat.setString(1, instance.getCategory());
+			pstat.setString(2, instance.getName());
+			pstat.setString(3, instance.getBarcode());
+			pstat.setString(4, instance.getUnit());
+			pstat.setString(5, instance.getFirstAmount());
 
 			pstat.executeUpdate();
 			pstat.close();
@@ -172,8 +164,8 @@ public class Materials {
 	public void updateMaterialAmountWithPrepaeredStatement(String query) {
 		try {
 			pstat = conn.prepareStatement(query);
-			pstat.setString(1, Materials.getInstance().getAmount());
-			pstat.setString(2, Materials.getInstance().getBarcode());
+			pstat.setString(1, instance.getAmount());
+			pstat.setString(2, instance.getBarcode());
 
 			pstat.executeUpdate();
 			pstat.close();
@@ -186,7 +178,7 @@ public class Materials {
 	public void setPriceOnAccountingWithPrepaeredStatement(String query) {
 		try {
 			pstat = conn.prepareStatement(query);
-			pstat.setString(1, Materials.getInstance().getPrice());
+			pstat.setString(1, instance.getPrice());
 			pstat.setString(2, "C");
 			pstat.setString(3, "Ürün alımı");
 

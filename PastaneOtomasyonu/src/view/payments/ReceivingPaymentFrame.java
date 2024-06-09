@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 
 public class ReceivingPaymentFrame extends JInternalFrame {
 	public JTextField remainingPaymentAmount;
-	public JTextField receivedPayment;
+	public JTextField receivedPaymentAmount;
 	public JButton getPaymentsButton;
 	public JButton searchButton;
 	public JComboBox cafeName;
@@ -55,10 +55,10 @@ public class ReceivingPaymentFrame extends JInternalFrame {
 		receivingPayment.setBounds(63, 208, 109, 22);
 		getContentPane().add(receivingPayment);
 
-		receivedPayment = new JTextField();
-		receivedPayment.setColumns(10);
-		receivedPayment.setBounds(217, 270, 240, 30);
-		getContentPane().add(receivedPayment);
+		receivedPaymentAmount = new JTextField();
+		receivedPaymentAmount.setColumns(10);
+		receivedPaymentAmount.setBounds(217, 270, 240, 30);
+		getContentPane().add(receivedPaymentAmount);
 
 		JLabel lblAlnandeme = new JLabel("Alınan Ödeme Miktarı :");
 		lblAlnandeme.setHorizontalAlignment(SwingConstants.LEFT);

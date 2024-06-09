@@ -13,6 +13,7 @@ import controllers.payments.ReceivingPaymentController;
 import controllers.payments.RemainingPaymentsController;
 import controllers.recipecards.ProducingRecipeCardController;
 import controllers.recipecards.SetRecipeCardController;
+import controllers.sales.SaleController;
 import view.MainFrame;
 
 public class MainFrameController {
@@ -87,6 +88,11 @@ public class MainFrameController {
 				controller.execute();
 			}
 		});
-		
+		mainFrame.saleMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SaleController controller=new SaleController(mainFrame);
+				controller.execute();
+			}
+		});
 	}
 }
