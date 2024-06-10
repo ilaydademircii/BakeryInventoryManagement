@@ -9,7 +9,7 @@ public class DatabaseConnection {
 	private static DatabaseConnection instance;
 
 	private String username = "root";
-	private String password = "*****";
+	private String password = "******";
 	private String dbName = "bakerymanagementsystem";
 	private String host = "localhost";
 	private int port = 3306;
