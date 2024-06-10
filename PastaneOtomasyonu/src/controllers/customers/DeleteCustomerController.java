@@ -2,9 +2,12 @@ package controllers.customers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import command.customerCommands.DeleteCustomerCommand;
 import command.customerCommands.SetCafeNamesComboBoxForCustomerCommand;
+import command.paymentCommands.GetCustomerInfoCommand;
 import model.Customer;
 import view.MainFrame;
 import view.customers.DeleteCustomerFrame;
@@ -16,6 +19,7 @@ public class DeleteCustomerController {
 	DeleteCustomerCommand deleteCustomerCommand;
 	SetCafeNamesComboBoxForCustomerCommand cafeNamesComboBoxCommand;
 	Customer customer;
+	GetCustomerInfoCommand customerInfoCommand;
 
 	public DeleteCustomerController(MainFrame mainFrame) {
 		super();
@@ -25,10 +29,13 @@ public class DeleteCustomerController {
 		this.deleteCustomerCommand = new DeleteCustomerCommand(frame);
 		this.cafeNamesComboBoxCommand = new SetCafeNamesComboBoxForCustomerCommand(frame);
 		this.cafeNamesComboBoxCommand.execute();
+		this.customerInfoCommand=new GetCustomerInfoCommand(frame);
 	}
 
 	public void execute() {
 		fillFrameInstance();
+		setCustomerInfo();
+		delete();
 
 	}
 
@@ -45,6 +52,27 @@ public class DeleteCustomerController {
 				customer.deleteCustomer();
 
 			}
+		});
+	}
+	
+	private void setCustomerInfo() {
+		frame.cafeName.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				try {
+					if (e.getStateChange() == ItemEvent.SELECTED) {
+
+						frame.cafeName.removeItemListener(this);
+				
+						customer.setCafeName(frame.cafeName.getSelectedItem().toString().trim());
+						customerInfoCommand.execute();
+
+						frame.cafeName.addItemListener(this);
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+
 		});
 	}
 

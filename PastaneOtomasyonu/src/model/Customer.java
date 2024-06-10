@@ -46,7 +46,10 @@ public class Customer {
 				if (!isExists(Customer.getInstance().getTaxNo())) {
 					String query = "insert into customers(CafeName,TaxNo,TaxAdministration,PhoneNumber,Address,Explanation)values(?,?,?,?,?,?)";
 					setCustomerWithPrepaeredStatement(query);
-
+					String query2 = "insert into remainingcustomerpayments(CustomerId,Amount)values((Select id from  customers where TaxNo=?),?)";
+					setPaymentWithPrepaeredStatement(query2);
+					String query3 = "insert into receivedcustomerpayments(CustomerId,Amount)values((Select id from  customers where TaxNo=?),?)";
+					setPaymentWithPrepaeredStatement(query3);
 					JOptionPane.showMessageDialog(null, "Müşteri başarıyla eklendi.", "  ",
 							JOptionPane.INFORMATION_MESSAGE);
 
@@ -80,7 +83,7 @@ public class Customer {
 	public void getCustomer() {
 		Customer customer = Customer.getInstance();
 		try {
-			String query = "Select TaxNo,TaxAdministration,PhoneNumber,Address from customers where CafeName =?";
+			String query = "Select TaxNo,TaxAdministration,PhoneNumber,Address,Explanation from customers where CafeName =?";
 
 			pstat = conn.prepareStatement(query);
 			pstat.setString(1, getCafeName());
@@ -91,6 +94,7 @@ public class Customer {
 				customer.setTaxAdministration(rs.getString("TaxAdministration"));
 				customer.setPhoneNumber(rs.getString("PhoneNumber"));
 				customer.setAddress(rs.getString("Address"));
+				customer.setExplanation(rs.getString("Explanation"));
 			}
 
 			pstat.close();
@@ -124,7 +128,7 @@ public class Customer {
 
 	public List<Customer> getAllCustomers() {
 		list.clear();
-		String query = "SELECT CafeName,TaxNo,TaxAdministration,PhoneNumber,Address FROM customers";
+		String query = "SELECT CafeName,TaxNo,TaxAdministration,PhoneNumber,Address,Explanation FROM customers";
 		try {
 
 			stat = conn.createStatement();
@@ -137,6 +141,7 @@ public class Customer {
 				customer.setTaxAdministration(rs.getString("TaxAdministration"));
 				customer.setPhoneNumber(rs.getString("PhoneNumber"));
 				customer.setAddress(rs.getString("Address"));
+				customer.setExplanation(rs.getString("Explanation"));
 				this.list.add(customer);
 			}
 
@@ -168,7 +173,21 @@ public class Customer {
 
 		}
 	}
+	public void setPaymentWithPrepaeredStatement(String query) {
+		try {
+			Customer customer = Customer.getInstance();
+			pstat = conn.prepareStatement(query);
+		
+			pstat.setString(1, customer.getTaxNo());
+			pstat.setString(2, "0");
+		
 
+			pstat.executeUpdate();
+			pstat.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void setCustomerWithPrepaeredStatement(String query) {
 		try {
 			Customer customer = Customer.getInstance();
