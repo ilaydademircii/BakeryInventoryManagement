@@ -24,11 +24,12 @@ public class DeleteCustomerFrame extends JInternalFrame {
 
 
 	public DeleteCustomerFrame() {
+		setBounds(100, 100, 552, 675);
 		setTitle("Müşteri Silme");
 		setClosable(true);
 		setMaximizable(true);
 		setIconifiable(true);
-		setBounds(100, 100, 552, 675);
+
 		getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("Kafe Adı");
@@ -110,6 +111,7 @@ public class DeleteCustomerFrame extends JInternalFrame {
 		cafeName.setFont(new Font("Tahoma", Font.BOLD, 11));
 		cafeName.setBounds(201, 29, 240, 30);
 		getContentPane().add(cafeName);
+		
 
 	}
 
