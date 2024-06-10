@@ -43,6 +43,7 @@ public class RemainingPayments {
 	}
 
 	public List<RemainingPayments> getAllRemainingPayments() {
+		list.clear();
 		String query = "SELECT customers.CafeName, customers.TaxNo, customers.TaxAdministration, customers.PhoneNumber, customers.Address, remainingcustomerpayments.Amount FROM remainingcustomerpayments"
 				+ " INNER JOIN customers ON remainingcustomerpayments.CustomerId = customers.id"
 				+ " WHERE remainingcustomerpayments.Amount REGEXP '^[0-9]+$' "

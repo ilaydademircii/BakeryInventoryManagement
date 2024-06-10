@@ -123,7 +123,7 @@ public class Customer {
 	}
 
 	public List<Customer> getAllCustomers() {
-
+		list.clear();
 		String query = "SELECT CafeName,TaxNo,TaxAdministration,PhoneNumber,Address FROM customers";
 		try {
 
