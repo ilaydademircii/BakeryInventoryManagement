@@ -14,11 +14,10 @@ public class SetAllMaterialNamesForRecipeCardsComboBoxCommand {
 		this.frame = frame;
 
 	}
-	
-	
-	
+
+	@SuppressWarnings("unchecked")
 	public void execute() {
-	
+
 		list = Materials.getInstance().getAllMaterialNames(Materials.getInstance().getCategory());
 
 		for (String model : list) {

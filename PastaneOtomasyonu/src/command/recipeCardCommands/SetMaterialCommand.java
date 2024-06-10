@@ -7,12 +7,11 @@ import view.recipecards.SetRecipeCardFrame;
 public class SetMaterialCommand {
 	SetRecipeCardFrame frame;
 	Materials materials;
-	
+
 	public SetMaterialCommand(SetRecipeCardFrame frame) {
 		super();
 		this.frame = frame;
 	}
-
 
 	public void execute() {
 		this.materials = new Materials();

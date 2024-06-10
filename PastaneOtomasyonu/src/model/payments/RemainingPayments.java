@@ -53,7 +53,7 @@ public class RemainingPayments {
 			ResultSet rs = stat.executeQuery(query);
 
 			while (rs.next()) {
-				RemainingPayments rp =new RemainingPayments();
+				RemainingPayments rp = new RemainingPayments();
 				rp.setCustomerCafeName(rs.getString("CafeName"));
 				rp.setCustomerTaxNumber(rs.getString("TaxNo"));
 				rp.setCustomerTaxAdministration(rs.getString("TaxAdministration"));

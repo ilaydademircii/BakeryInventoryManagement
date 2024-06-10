@@ -63,30 +63,7 @@ public class Materials {
 		}
 		return list;
 	}
-/*	public void getMaterial() {
-	    String query = "SELECT Barcode, Unit FROM materials WHERE Category = ? AND Name = ?";
 
-	   
-	    
-	    try {
-	        PreparedStatement stat = conn.prepareStatement(query);
-	        stat.setString(1, category);
-	        stat.setString(2, name);
-
-	        ResultSet rs = stat.executeQuery();
-
-	        while (rs.next()) {
-	            Materials.getInstance().setBarcode(rs.getString("Barcode"));
-	            Materials.getInstance().setUnit(rs.getString("Unit"));
-	        }
-
-	        rs.close();
-	        stat.close();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	}
-*/
 	public void getMaterial() {
 		String query = "Select Barcode,Unit from materials where Category=? AND Name=? ";
 
@@ -131,10 +108,9 @@ public class Materials {
 			String query1 = "UPDATE materials SET Amount = Amount + ? WHERE Barcode = ?";
 			updateMaterialAmountWithPrepaeredStatement(query1);
 
-			
-			String query2="insert into accounting(Price,Type,Explanation) values (?,?,?)";
+			String query2 = "insert into accounting(Price,Type,Explanation) values (?,?,?)";
 			setPriceOnAccountingWithPrepaeredStatement(query2);
-			
+
 			JOptionPane.showMessageDialog(null, "Malzeme başarıyla eklendi.", "  ", JOptionPane.INFORMATION_MESSAGE);
 
 		} catch (Exception e) {
@@ -189,9 +165,7 @@ public class Materials {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+
 	public String getCategory() {
 		return category;
 	}

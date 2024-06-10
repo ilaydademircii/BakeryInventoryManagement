@@ -16,18 +16,17 @@ public class DeleteCustomerController {
 	DeleteCustomerCommand deleteCustomerCommand;
 	SetCafeNamesComboBoxForCustomerCommand cafeNamesComboBoxCommand;
 	Customer customer;
-	
+
 	public DeleteCustomerController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
-		this.frame=new DeleteCustomerFrame();
-		this.customer=Customer.getInstance();
-		this.deleteCustomerCommand=new DeleteCustomerCommand(frame);
-		this.cafeNamesComboBoxCommand=new SetCafeNamesComboBoxForCustomerCommand(frame);
+		this.frame = new DeleteCustomerFrame();
+		this.customer = Customer.getInstance();
+		this.deleteCustomerCommand = new DeleteCustomerCommand(frame);
+		this.cafeNamesComboBoxCommand = new SetCafeNamesComboBoxForCustomerCommand(frame);
 		this.cafeNamesComboBoxCommand.execute();
 	}
-	
-	
+
 	public void execute() {
 		fillFrameInstance();
 
@@ -38,8 +37,7 @@ public class DeleteCustomerController {
 		mainFrame.desktopPane.add(frame);
 		frame.toFront();
 	}
-	
-	
+
 	public void delete() {
 		frame.deletingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -49,6 +47,5 @@ public class DeleteCustomerController {
 			}
 		});
 	}
-		
-	
+
 }

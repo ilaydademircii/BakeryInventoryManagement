@@ -2,13 +2,13 @@ package view.materials;
 
 import java.awt.Font;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.DefaultComboBoxModel;
 
 public class AddMaterialsFrame extends JInternalFrame {
 	public JTextField unit;

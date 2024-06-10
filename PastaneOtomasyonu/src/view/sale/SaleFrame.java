@@ -12,8 +12,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class SaleFrame extends JInternalFrame {
 	public JTextField productAmount;
@@ -28,8 +26,7 @@ public class SaleFrame extends JInternalFrame {
 	public JButton saleButton;
 	public JButton addingProductButton;
 	public DefaultTableModel modelim;
-	
-	
+
 	Object[] colums = { "Ürün", "Barkodu", "Miktarı", "Fiyatı" };
 	private JLabel lblNewLabel_1;
 	public JTextField productPrice;
@@ -51,7 +48,7 @@ public class SaleFrame extends JInternalFrame {
 		textf.setBounds(38, 54, 90, 30);
 		getContentPane().add(textf);
 
-		 addingProductButton = new JButton("Ürün Ekle");
+		addingProductButton = new JButton("Ürün Ekle");
 
 		addingProductButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		addingProductButton.setBounds(293, 628, 126, 30);
@@ -153,30 +150,30 @@ public class SaleFrame extends JInternalFrame {
 		saleButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		saleButton.setBounds(720, 457, 126, 30);
 		getContentPane().add(saleButton);
-		
+
 		lblNewLabel_1 = new JLabel("Birim Fiyatı");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(38, 575, 90, 30);
 		getContentPane().add(lblNewLabel_1);
-		
+
 		productPrice = new JTextField();
 		productPrice.setColumns(10);
 		productPrice.setBounds(192, 575, 240, 30);
 		getContentPane().add(productPrice);
-		
+
 		lblNewLabel_1_3 = new JLabel("TL");
 		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_3.setBounds(445, 571, 90, 30);
 		getContentPane().add(lblNewLabel_1_3);
-		
+
 		lblNewLabel_1_4 = new JLabel("Barkod");
 		lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_4.setBounds(38, 482, 90, 30);
 		getContentPane().add(lblNewLabel_1_4);
-		
+
 		productBarcode = new JTextField();
 		productBarcode.setEditable(false);
 		productBarcode.setColumns(10);

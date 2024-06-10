@@ -16,14 +16,13 @@ public class Payment {
 	private Connection conn = null;
 	private Statement stat = null;
 	private static Payment instance;
-	
-	
+
 	List<Payment> list;
-	
+
 	int customerId;
 	String amount;
 	String date;
-	
+
 	public Payment() {
 		super();
 		this.db = DatabaseConnection.getInstance();
@@ -36,7 +35,6 @@ public class Payment {
 		}
 		return instance;
 	}
-	
 
 	public List<Payment> getAllReceivedPaymentsWithCustomerId(String CafeName) {
 		list = new ArrayList<>();
@@ -88,26 +86,4 @@ public class Payment {
 		this.date = date;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
-/*
---ReceivedCustomerPayments 
-id 
-CustomerId
-Amount
-Date*/

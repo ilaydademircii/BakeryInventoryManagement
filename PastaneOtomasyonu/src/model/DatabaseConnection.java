@@ -1,6 +1,5 @@
 package model;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,9 +7,9 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
 	private static DatabaseConnection instance;
-	
+
 	private String username = "root";
-	private String password = "zidily";
+	private String password = "*****";
 	private String dbName = "bakerymanagementsystem";
 	private String host = "localhost";
 	private int port = 3306;

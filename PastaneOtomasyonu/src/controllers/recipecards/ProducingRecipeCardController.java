@@ -18,6 +18,7 @@ public class ProducingRecipeCardController {
 	ProducingRecipeCardFrame frame;
 
 	RecipeCards recipeCards;
+	
 	GetProducingRecipeCardCommand getProducingRecipeCardCommand;
 	SetProducingRecipeCardCommand setProducingRecipeCardCommand;
 	SetRecipeCardNamesCommand setRecipeCardNamesCommand;

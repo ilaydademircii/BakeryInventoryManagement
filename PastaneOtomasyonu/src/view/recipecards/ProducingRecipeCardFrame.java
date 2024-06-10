@@ -8,8 +8,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class ProducingRecipeCardFrame extends JInternalFrame {
 	public JTextField unit;

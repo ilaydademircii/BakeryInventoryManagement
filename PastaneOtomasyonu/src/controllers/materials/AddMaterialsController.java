@@ -17,6 +17,7 @@ public class AddMaterialsController {
 	AddMaterialsFrame frame;
 
 	Materials materials;
+	
 	AddMaterialCommand addMaterialCommand;
 	SetAllMaterialNamesForMaterialsComboBoxCommand allMaterialNamesForMaterialsComboBoxCommand;
 	GetMaterialCommand getMaterialCommand;

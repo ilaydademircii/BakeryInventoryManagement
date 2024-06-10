@@ -15,6 +15,7 @@ public class GetReceivedPaymentCommand {
 	}
 
 	public void execute() {
+
 		receivingPayment.setCustomerName(frame.cafeName.getSelectedItem().toString().trim());
 		receivingPayment.setReceivedAmount(frame.receivedPaymentAmount.getText().trim());
 	}

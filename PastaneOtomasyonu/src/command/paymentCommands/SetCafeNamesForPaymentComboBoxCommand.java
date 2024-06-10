@@ -5,7 +5,6 @@ import java.util.List;
 import model.Customer;
 import view.payments.PaymentFrame;
 
-
 public class SetCafeNamesForPaymentComboBoxCommand {
 	PaymentFrame frame;
 	List<String> list;
@@ -16,6 +15,7 @@ public class SetCafeNamesForPaymentComboBoxCommand {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void execute() {
 		list = Customer.getInstance().getAllCafeNames();
 

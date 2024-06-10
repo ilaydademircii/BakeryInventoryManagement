@@ -21,6 +21,7 @@ public class ListingAllRemainingPaymentsCommand {
 			frame.modelim.addRow(rowData);
 
 		}
+		
 		frame.table.setModel(frame.modelim);
 	}
 

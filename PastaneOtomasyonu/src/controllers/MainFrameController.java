@@ -23,74 +23,73 @@ public class MainFrameController {
 
 		mainFrame.addCustomerMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddCustomerController controller=new AddCustomerController(mainFrame);
+				AddCustomerController controller = new AddCustomerController(mainFrame);
 				controller.execute();
 			}
 		});
 
 		mainFrame.deleteCustomerMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DeleteCustomerController controller=new DeleteCustomerController(mainFrame);
+				DeleteCustomerController controller = new DeleteCustomerController(mainFrame);
 				controller.execute();
 			}
 		});
-		
-		
+
 		mainFrame.listCustomersMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListingCustomersController controller=new ListingCustomersController(mainFrame);
+				ListingCustomersController controller = new ListingCustomersController(mainFrame);
 				controller.execute();
 			}
 		});
-		
+
 		mainFrame.paymentMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PaymentController controller=new PaymentController(mainFrame);
+				PaymentController controller = new PaymentController(mainFrame);
 				controller.execute();
 			}
 		});
-		
+
 		mainFrame.receivingPaymentsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReceivingPaymentController controller=new ReceivingPaymentController(mainFrame);
+				ReceivingPaymentController controller = new ReceivingPaymentController(mainFrame);
 				controller.execute();
 			}
 		});
 
 		mainFrame.remainingPaymentsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RemainingPaymentsController controller=new RemainingPaymentsController(mainFrame);
+				RemainingPaymentsController controller = new RemainingPaymentsController(mainFrame);
 				controller.execute();
 			}
 		});
-		
+
 		mainFrame.materialTypeMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddMaterialTypeController controller=new AddMaterialTypeController(mainFrame);
+				AddMaterialTypeController controller = new AddMaterialTypeController(mainFrame);
 				controller.execute();
 			}
 		});
 		mainFrame.materialMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddMaterialsController controller=new AddMaterialsController(mainFrame);
+				AddMaterialsController controller = new AddMaterialsController(mainFrame);
 				controller.execute();
 			}
 		});
 		mainFrame.recipeCardMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SetRecipeCardController controller=new SetRecipeCardController(mainFrame);
+				SetRecipeCardController controller = new SetRecipeCardController(mainFrame);
 				controller.execute();
 			}
 		});
 		mainFrame.productMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ProducingRecipeCardController controller=new ProducingRecipeCardController(mainFrame);
+				ProducingRecipeCardController controller = new ProducingRecipeCardController(mainFrame);
 				controller.execute();
 			}
 		});
 		mainFrame.saleMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SaleController controller=new SaleController(mainFrame);
+				SaleController controller = new SaleController(mainFrame);
 				controller.execute();
 			}
 		});

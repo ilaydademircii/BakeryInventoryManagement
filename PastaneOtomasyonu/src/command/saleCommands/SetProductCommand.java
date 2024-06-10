@@ -11,11 +11,11 @@ public class SetProductCommand {
 	public SetProductCommand(SaleFrame frame) {
 		super();
 		this.frame = frame;
-		
+
 	}
 
 	public void execute() {
-		this.recipeCards =new RecipeCards();
+		this.recipeCards = new RecipeCards();
 		recipeCards.setName(frame.productName.getSelectedItem().toString().trim());
 		recipeCards.setBarcode(frame.productBarcode.getText().trim());
 		recipeCards.setAmount(frame.productAmount.getText().trim());

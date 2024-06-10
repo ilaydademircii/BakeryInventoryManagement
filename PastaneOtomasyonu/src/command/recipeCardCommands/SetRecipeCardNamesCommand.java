@@ -15,7 +15,6 @@ public class SetRecipeCardNamesCommand {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public void execute() {
 
 		list = RecipeCards.getInstance().getAllRecipeCardNames();

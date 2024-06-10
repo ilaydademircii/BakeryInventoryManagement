@@ -22,6 +22,7 @@ public class SetRecipeCardController {
 
 	RecipeCards recipeCards;
 	Materials materials;
+
 	SetAllMaterialNamesForRecipeCardsComboBoxCommand allMaterialNamesForRecipeCardsComboBoxCommand;
 	GetMaterialForRecipeCardsCommand getMaterialForRecipeCardsCommand;
 	ListingAllMaterialsCommand listingAllMaterialsCommand;

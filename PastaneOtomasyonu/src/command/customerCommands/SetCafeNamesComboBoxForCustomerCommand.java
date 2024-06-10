@@ -5,7 +5,6 @@ import java.util.List;
 import model.Customer;
 import view.customers.DeleteCustomerFrame;
 
-
 public class SetCafeNamesComboBoxForCustomerCommand {
 	DeleteCustomerFrame frame;
 	List<String> list;
@@ -16,6 +15,7 @@ public class SetCafeNamesComboBoxForCustomerCommand {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void execute() {
 		list = Customer.getInstance().getAllCafeNames();
 

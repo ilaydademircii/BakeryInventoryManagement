@@ -27,8 +27,6 @@ public class RecipeCards {
 	String price;
 	String totalPrice;
 	String date;
-	
-
 
 	public List<Materials> materials;
 
@@ -222,7 +220,5 @@ public class RecipeCards {
 	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-
-
 
 }

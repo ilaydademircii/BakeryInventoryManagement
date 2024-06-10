@@ -1,15 +1,14 @@
 package view.customers;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
-import javax.swing.JFormattedTextField;
+
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JFormattedTextField;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class AddCustomerFrame extends JInternalFrame {
 	public JTextField cafeName;

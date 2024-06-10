@@ -17,7 +17,7 @@ public class Customer {
 	private Statement stat = null;
 
 	private static Customer instance;
-//Aa
+
 	String cafeName;
 	String taxNo;
 	String taxAdministration;
@@ -25,11 +25,12 @@ public class Customer {
 	String address;
 	String explanation;
 	List<Customer> list;
+
 	public Customer() {
 		super();
 		this.db = DatabaseConnection.getInstance();
 		this.conn = db.getConnection();
-		this.list=new  ArrayList<Customer>();
+		this.list = new ArrayList<Customer>();
 	}
 
 	public static Customer getInstance() {
@@ -59,51 +60,47 @@ public class Customer {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void deleteCustomer() {
 		try {
-				String query = "Delete from customers where CafeName =?";
+			String query = "Delete from customers where CafeName =?";
 
-				pstat = conn.prepareStatement(query);
-				pstat.setString(1, getCafeName());
+			pstat = conn.prepareStatement(query);
+			pstat.setString(1, getCafeName());
 
-				pstat.executeUpdate();
-				pstat.close();
+			pstat.executeUpdate();
+			pstat.close();
 
-	
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
-	
+
 	public void getCustomer() {
-		Customer customer=Customer.getInstance();
+		Customer customer = Customer.getInstance();
 		try {
-				String query = "Select TaxNo,TaxAdministration,PhoneNumber,Address from customers where CafeName =?";
+			String query = "Select TaxNo,TaxAdministration,PhoneNumber,Address from customers where CafeName =?";
 
-				pstat = conn.prepareStatement(query);
-				pstat.setString(1, getCafeName());
-				
-				ResultSet rs = pstat.executeQuery();
-				while (rs.next()) {
-					customer.setTaxNo(rs.getString("TaxNo"));
-					customer.setTaxAdministration(rs.getString("TaxAdministration"));
-					customer.setPhoneNumber(rs.getString("PhoneNumber"));
-					customer.setAddress(rs.getString("Address"));
-				}
-				
-			
-				pstat.close();
+			pstat = conn.prepareStatement(query);
+			pstat.setString(1, getCafeName());
 
-	
+			ResultSet rs = pstat.executeQuery();
+			while (rs.next()) {
+				customer.setTaxNo(rs.getString("TaxNo"));
+				customer.setTaxAdministration(rs.getString("TaxAdministration"));
+				customer.setPhoneNumber(rs.getString("PhoneNumber"));
+				customer.setAddress(rs.getString("Address"));
+			}
+
+			pstat.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
-	
-	
+
 	public List<String> getAllCafeNames() {
 		List<String> list = new ArrayList<>();
 		try {
@@ -114,27 +111,27 @@ public class Customer {
 			while (rs.next()) {
 				list.add(rs.getString("CafeName"));
 			}
-			
+
 			rs.close();
 			stat.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 		return list;
 	}
-	
+
 	public List<Customer> getAllCustomers() {
-		
+
 		String query = "SELECT CafeName,TaxNo,TaxAdministration,PhoneNumber,Address FROM customers";
 		try {
-			
+
 			stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(query);
 
 			while (rs.next()) {
-				Customer customer=new Customer();
+				Customer customer = new Customer();
 				customer.setCafeName(rs.getString("CafeName"));
 				customer.setTaxNo(rs.getString("TaxNo"));
 				customer.setTaxAdministration(rs.getString("TaxAdministration"));
@@ -142,16 +139,17 @@ public class Customer {
 				customer.setAddress(rs.getString("Address"));
 				this.list.add(customer);
 			}
-			
+
 			rs.close();
 			stat.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 		return this.list;
 	}
+
 	public boolean isExists(String taxNo) {
 		try {
 			String query = "SELECT EXISTS (SELECT 1 FROM customers WHERE TaxNo=?) AS var_mi";

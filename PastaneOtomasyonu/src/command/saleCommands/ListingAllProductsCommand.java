@@ -23,6 +23,7 @@ public class ListingAllProductsCommand {
 			frame.modelim.addRow(rowData);
 
 		}
+		
 		frame.table.setModel(frame.modelim);
 	}
 

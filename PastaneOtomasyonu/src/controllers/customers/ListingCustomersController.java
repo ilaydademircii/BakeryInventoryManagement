@@ -12,16 +12,15 @@ public class ListingCustomersController {
 	private MainFrame mainFrame;
 	ListingCustomersFrame frame;
 	ListingAllCustomersCommand listingAllCustomersCommand;
-	
+
 	public ListingCustomersController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
-		this.frame=new ListingCustomersFrame();
-		this.listingAllCustomersCommand=new ListingAllCustomersCommand(frame);
-		
+		this.frame = new ListingCustomersFrame();
+		this.listingAllCustomersCommand = new ListingAllCustomersCommand(frame);
+
 	}
-	
-	
+
 	public void execute() {
 		fillFrameInstance();
 		listing();
@@ -33,14 +32,13 @@ public class ListingCustomersController {
 		mainFrame.desktopPane.add(frame);
 		frame.toFront();
 	}
-	
-	
-	 private void listing() {
-			frame.listingButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					listingAllCustomersCommand.execute();
-				}
-			});
-	 }
-		
+
+	private void listing() {
+		frame.listingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listingAllCustomersCommand.execute();
+			}
+		});
+	}
+
 }

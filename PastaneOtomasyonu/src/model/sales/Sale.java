@@ -28,10 +28,6 @@ public class Sale {
 
 	public List<RecipeCards> list;
 
-	
-	
-	
-	
 	public Sale() {
 		super();
 		this.db = DatabaseConnection.getInstance();
@@ -46,10 +42,6 @@ public class Sale {
 		return instance;
 	}
 
-	
-
-	
-	
 	public void sale(String customerTaxNo) {
 
 		try {
@@ -83,7 +75,7 @@ public class Sale {
 	public void setRemainingPaymentAmount(String query, String customerTaxNo, RecipeCards rc) {
 		try {
 			pstat = conn.prepareStatement(query);
-		
+
 			pstat.setString(1, rc.getTotalPrice());
 			pstat.setString(2, customerTaxNo);
 

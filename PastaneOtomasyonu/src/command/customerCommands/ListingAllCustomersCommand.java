@@ -15,6 +15,7 @@ public class ListingAllCustomersCommand {
 
 	public void execute() {
 		frame.modelim.setRowCount(0);
+
 		for (Customer c : Customer.getInstance().getAllCustomers()) {
 			Object[] rowData = { c.getCafeName(), c.getTaxNo(), c.getTaxAdministration(), c.getPhoneNumber(),
 					c.getAddress() };

@@ -18,7 +18,6 @@ public class ReceivingPaymentFrame extends JInternalFrame {
 	public JButton searchButton;
 	public JComboBox cafeName;
 
-	// private static final long serialVersionUID = 1L;
 
 	public ReceivingPaymentFrame() {
 		setTitle("Ödeme Alma");
@@ -76,9 +75,7 @@ public class ReceivingPaymentFrame extends JInternalFrame {
 		searchButton.setIcon(new ImageIcon("C:\\Users\\zehra\\OneDrive\\Masaüstü\\icons\\icons8-search-20.png"));
 		searchButton.setBounds(399, 147, 58, 26);
 		getContentPane().add(searchButton);
-		
-		
-		
+
 		cafeName = new JComboBox();
 		cafeName.setFont(new Font("Tahoma", Font.BOLD, 11));
 		cafeName.setBounds(217, 56, 240, 30);

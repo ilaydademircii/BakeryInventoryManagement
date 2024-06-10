@@ -43,7 +43,6 @@ public class ReceivingPayment {
 
 			// Kalan miktar 0'dan büyükse, ödeme işlemini gerçekleştiriyoruz
 			if (remainingAmount > 0) {
-				// Kalan miktar 0'dan büyükse, ödeme işlemini gerçekleştiriyoruz
 
 				String query = "insert into receivedcustomerpayments(CustomerId,Amount) values ((Select id from  customers where CafeName=?) ,?)";
 				setReceievedPaymentsWithPrepaeredStatement(query);

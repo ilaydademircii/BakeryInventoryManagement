@@ -13,25 +13,23 @@ public class PaymentController {
 
 	private MainFrame mainFrame;
 	PaymentFrame frame;
-	
-	Payment payment; 
+
+	Payment payment;
 	SetAllReceivedPaymentsCommand allReceivedPaymentsCommand;
 	SetCafeNamesForPaymentComboBoxCommand cafeNamesComboBoxCommand;
-	
+
 	public PaymentController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
-		this.frame=new PaymentFrame();
-		this.allReceivedPaymentsCommand= new SetAllReceivedPaymentsCommand(frame);
-		this.cafeNamesComboBoxCommand= new SetCafeNamesForPaymentComboBoxCommand(frame);
+		this.frame = new PaymentFrame();
+		this.allReceivedPaymentsCommand = new SetAllReceivedPaymentsCommand(frame);
+		this.cafeNamesComboBoxCommand = new SetCafeNamesForPaymentComboBoxCommand(frame);
 		cafeNamesComboBoxCommand.execute();
 	}
-	
-	
+
 	public void execute() {
 		fillFrameInstance();
 		search();
-		
 
 	}
 
@@ -40,14 +38,14 @@ public class PaymentController {
 		mainFrame.desktopPane.add(frame);
 		frame.toFront();
 	}
-	
+
 	private void search() {
-		 frame.searchButton.addActionListener(new ActionListener() {
-			 	public void actionPerformed(ActionEvent e) {
-			 		allReceivedPaymentsCommand.execute();
-			 		
-			 	}
-			 });
-		
+		frame.searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				allReceivedPaymentsCommand.execute();
+
+			}
+		});
+
 	}
 }

@@ -13,20 +13,18 @@ public class AddCustomerController {
 	private MainFrame mainFrame;
 	AddCustomerFrame frame;
 	Customer customer;
-	
+
 	AddCustomerCommand addCustomerCommand;
-	
+
 	public AddCustomerController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
-		this.frame=new AddCustomerFrame();
+		this.frame = new AddCustomerFrame();
 		this.customer = Customer.getInstance();
-		this.addCustomerCommand=new AddCustomerCommand(frame);
-		
-		
+		this.addCustomerCommand = new AddCustomerCommand(frame);
+
 	}
-	
-	
+
 	public void execute() {
 		fillFrameInstance();
 		save();
@@ -38,7 +36,7 @@ public class AddCustomerController {
 		mainFrame.desktopPane.add(frame);
 		frame.toFront();
 	}
-	
+
 	private void save() {
 		frame.addingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

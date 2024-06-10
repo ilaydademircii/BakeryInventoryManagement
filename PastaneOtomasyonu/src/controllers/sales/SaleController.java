@@ -111,6 +111,7 @@ public class SaleController {
 
 						frame.productName.removeItemListener(this);
 						clearProductInfo();
+						
 						recipeCards.setName(frame.productName.getSelectedItem().toString().trim());
 						getProductInfoCommand.execute();
 

@@ -12,20 +12,19 @@ public class RemainingPaymentsController {
 
 	private MainFrame mainFrame;
 	RemainingPaymentFrame frame;
-	
+
 	RemainingPayments remainingPayments;
-	
+
 	ListingAllRemainingPaymentsCommand listingAllRemainingPaymentsCommand;
-	
+
 	public RemainingPaymentsController(MainFrame mainFrame) {
 		super();
 		this.mainFrame = mainFrame;
-		this.frame=new RemainingPaymentFrame();
-		this.remainingPayments=RemainingPayments.getInstance();
-		this.listingAllRemainingPaymentsCommand=new ListingAllRemainingPaymentsCommand(frame);
+		this.frame = new RemainingPaymentFrame();
+		this.remainingPayments = RemainingPayments.getInstance();
+		this.listingAllRemainingPaymentsCommand = new ListingAllRemainingPaymentsCommand(frame);
 	}
-	
-	
+
 	public void execute() {
 		fillFrameInstance();
 		listing();
@@ -37,14 +36,13 @@ public class RemainingPaymentsController {
 		mainFrame.desktopPane.add(frame);
 		frame.toFront();
 	}
-	
-	 private void listing() {
-			frame.listingButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					listingAllRemainingPaymentsCommand.execute();
-				}
-			});
-	 }
-		
-	
+
+	private void listing() {
+		frame.listingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listingAllRemainingPaymentsCommand.execute();
+			}
+		});
+	}
+
 }

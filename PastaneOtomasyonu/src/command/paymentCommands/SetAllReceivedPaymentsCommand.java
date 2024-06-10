@@ -22,6 +22,7 @@ public class SetAllReceivedPaymentsCommand {
 			frame.modelim.addRow(rowData);
 
 		}
+		
 		frame.table.setModel(frame.modelim);
 	}
 

@@ -23,7 +23,6 @@ public class SetRecipeCardFrame extends JInternalFrame {
 	public JComboBox material_name;
 	public JButton addingMaterialButton;
 	public JButton saveButton;
-
 	public DefaultTableModel modelim;
 	public JButton listingButton;
 	Object[] colums = { "Kategorisi", "Malzeme", "Miktarı", "Birimi" };
