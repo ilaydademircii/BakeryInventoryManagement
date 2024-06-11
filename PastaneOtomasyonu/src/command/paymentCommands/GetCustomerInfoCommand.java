@@ -21,6 +21,7 @@ public class GetCustomerInfoCommand {
 		frame.address.setText(customer.getAddress());
 		frame.explanation.setText(customer.getExplanation());
 
+		
 	}
 
 }
